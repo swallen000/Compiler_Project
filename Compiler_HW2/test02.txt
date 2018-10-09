@@ -1,0 +1,317 @@
+Shift PROGRAM
+Shift IDENTIFIER
+Shift LPAREN
+Shift IDENTIFIER
+Shift COMMA
+Shift IDENTIFIER
+Shift COMMA
+Shift IDENTIFIER
+Shift RPAREN
+Shift SEMICOLON
+comment: // variable declaraions
+Shift VAR
+Shift IDENTIFIER
+Shift COMMA
+Shift IDENTIFIER
+Shift COMMA
+Shift IDENTIFIER
+Shift COLON
+Shift INTEGER
+Shift SEMICOLON
+Shift VAR
+Shift IDENTIFIER
+Shift COMMA
+Shift IDENTIFIER
+Shift COLON
+Shift ARRAY
+Shift LBRAC
+Shift DIGSEQ
+Shift DOTDOT
+Shift DIGSEQ
+Shift RBRAC
+Shift OF
+Shift INTEGER
+Shift SEMICOLON
+Shift VAR
+Shift IDENTIFIER
+Shift COMMA
+Shift IDENTIFIER
+Shift COLON
+Shift REAL
+Shift SEMICOLON
+comment: // multi-dimensional array
+Shift VAR
+Shift IDENTIFIER
+Shift COLON
+Shift ARRAY
+Shift LBRAC
+Shift DIGSEQ
+Shift DOTDOT
+Shift DIGSEQ
+Shift RBRAC
+Shift OF
+Shift ARRAY
+Shift LBRAC
+Shift DIGSEQ
+Shift DOTDOT
+Shift DIGSEQ
+Shift RBRAC
+Shift OF
+Shift ARRAY
+Shift LBRAC
+Shift DIGSEQ
+Shift DOTDOT
+Shift DIGSEQ
+Shift RBRAC
+Shift OF
+Shift ARRAY
+Shift LBRAC
+Shift DIGSEQ
+Shift DOTDOT
+Shift DIGSEQ
+Shift RBRAC
+Shift OF
+Shift ARRAY
+Shift LBRAC
+Shift DIGSEQ
+Shift DOTDOT
+Shift DIGSEQ
+Shift RBRAC
+Shift OF
+Shift REAL
+Shift SEMICOLON
+Shift VAR
+Shift IDENTIFIER
+Shift COLON
+Shift ARRAY
+Shift LBRAC
+Shift DIGSEQ
+Shift DOTDOT
+Shift DIGSEQ
+Shift RBRAC
+Shift OF
+Shift ARRAY
+Shift LBRAC
+Shift DIGSEQ
+Shift DOTDOT
+Shift DIGSEQ
+Shift RBRAC
+Shift OF
+Shift REAL
+Shift SEMICOLON
+Shift BEGIN
+Shift IDENTIFIER
+Shift ASSIGNMENT
+Shift IDENTIFIER
+Shift PLUS
+Shift DIGSEQ
+Shift SEMICOLON
+comment: // un-initialized variable
+comment: // Can your compiler find this error?
+comment: // Will your compiler generate run-time checks?
+Shift IDENTIFIER
+Shift LBRAC
+Shift DIGSEQ
+Shift RBRAC
+Shift LBRAC
+Shift DIGSEQ
+Shift RBRAC
+Shift ASSIGNMENT
+Shift IDENTIFIER
+Shift LBRAC
+Shift DIGSEQ
+Shift RBRAC
+Shift LBRAC
+Shift DIGSEQ
+Shift RBRAC
+Shift PLUS
+Shift REALNUMBER
+comment: // un-initialized variable
+Shift END
+Shift DOT
+comment: // this is the end of the program
+
+
+/PROGRAM
+        foo
+        (
+         /identifier_list
+                 /identifier_list
+                         /identifier_list
+                                input
+                        ,
+                        output
+                ,
+                error
+        )
+        ;
+
+        VAR
+         /identifier_list
+                 /identifier_list
+                         /identifier_list
+                                a
+                        ,
+                        b
+                ,
+                c
+        :
+        /type
+                integer
+        ;
+        VAR
+         /identifier_list
+                 /identifier_list
+                        d
+                ,
+                e
+        :
+        /type
+                ARRAY
+                [
+                1
+                ../n                10
+                ]
+                OF
+                /type
+                        integer
+        ;
+        VAR
+         /identifier_list
+                 /identifier_list
+                        g
+                ,
+                h
+        :
+        /type
+                real
+        ;
+        VAR
+         /identifier_list
+                g
+        :
+        /type
+                ARRAY
+                [
+                23
+                ../n                57
+                ]
+                OF
+                /type
+                        ARRAY
+                        [
+                        23
+                        ../n                        57
+                        ]
+                        OF
+                        /type
+                                ARRAY
+                                [
+                                23
+                                ../n                                57
+                                ]
+                                OF
+                                /type
+                                        ARRAY
+                                        [
+                                        23
+                                        ../n                                        57
+                                        ]
+                                        OF
+                                        /type
+                                                ARRAY
+                                                [
+                                                23
+                                                ../n                                                57
+                                                ]
+                                                OF
+                                                /type
+                                                        real
+        ;
+        VAR
+         /identifier_list
+                k
+        :
+        /type
+                ARRAY
+                [
+                23
+                ../n                57
+                ]
+                OF
+                /type
+                        ARRAY
+                        [
+                        23
+                        ../n                        57
+                        ]
+                        OF
+                        /type
+                                real
+        ;
+
+        /compound_statement
+                BEGIN
+                /optional_statements
+                        /statement_list
+                                /STMT
+                                         /variable
+                                                a
+
+                                        :=
+                                        /expression 
+                                                /simple expression 
+                                                        /TERM
+                                                                /factor
+                                                                        a
+
+                                                        /ADD
+                                                        /TERM
+                                                                /factor
+                                                                        1
+                                ;
+                                /STMT
+                                         /variable
+                                                k
+
+                                                [
+                                                /expression 
+                                                        /simple expression 
+                                                                /TERM
+                                                                        /factor
+                                                                                20
+                                                ]
+                                                [
+                                                /expression 
+                                                        /simple expression 
+                                                                /TERM
+                                                                        /factor
+                                                                                25
+                                                ]
+                                        :=
+                                        /expression 
+                                                /simple expression 
+                                                        /TERM
+                                                                /factor
+                                                                        k
+
+                                                                        [
+                                                                        /expression 
+                                                                                /simple expression 
+                                                                                        /TERM
+                                                                                                /factor
+                                                                                                        20
+                                                                        ]
+                                                                        [
+                                                                        /expression 
+                                                                                /simple expression 
+                                                                                        /TERM
+                                                                                                /factor
+                                                                                                        25
+                                                                        ]
+                                                        /ADD
+                                                        /TERM
+                                                                /factor
+                                                                        3.14
+                END
+        .

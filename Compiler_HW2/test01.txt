@@ -1,0 +1,207 @@
+Shift PROGRAM
+Shift IDENTIFIER
+Shift LPAREN
+Shift IDENTIFIER
+Shift COMMA
+Shift IDENTIFIER
+Shift COMMA
+Shift IDENTIFIER
+Shift RPAREN
+Shift SEMICOLON
+Shift VAR
+Shift IDENTIFIER
+Shift COMMA
+Shift IDENTIFIER
+Shift COLON
+Shift INTEGER
+Shift SEMICOLON
+Shift FUNCTION
+Shift IDENTIFIER
+Shift LPAREN
+Shift IDENTIFIER
+Shift COLON
+Shift INTEGER
+Shift RPAREN
+Shift COLON
+Shift INTEGER
+Shift SEMICOLON
+Shift BEGIN
+Shift IDENTIFIER
+Shift ASSIGNMENT
+Shift IDENTIFIER
+Shift PLUS
+Shift IDENTIFIER
+Shift PLUS
+Shift IDENTIFIER
+Shift END
+Shift SEMICOLON
+Shift BEGIN
+Shift IDENTIFIER
+Shift ASSIGNMENT
+Shift DIGSEQ
+Shift SEMICOLON
+Shift IF
+Shift IDENTIFIER
+Shift GT
+Shift DIGSEQ
+Shift THEN
+Shift IDENTIFIER
+Shift ASSIGNMENT
+Shift DIGSEQ
+Shift ELSE
+Shift IDENTIFIER
+Shift ASSIGNMENT
+Shift DIGSEQ
+Shift SEMICOLON
+Shift IDENTIFIER
+Shift ASSIGNMENT
+Shift IDENTIFIER
+Shift LPAREN
+Shift DIGSEQ
+Shift RPAREN
+comment: // should there be a semicolon here?
+Shift END
+Shift DOT
+
+
+/PROGRAM
+        ab
+        (
+         /identifier_list
+                 /identifier_list
+                         /identifier_list
+                                cd
+                        ,
+                        ef
+                ,
+                gh
+        )
+        ;
+
+        VAR
+         /identifier_list
+                 /identifier_list
+                        ij
+                ,
+                op
+        :
+        /type
+                integer
+        ;
+
+         /subprogram_declaration
+                 /subprogram_head
+                        FUNCTION
+                        kl
+                         /arguments
+                                (
+                                 /parameter_list
+
+                                         /identifier_list
+                                                mn
+                                        :
+                                        /type
+                                                integer
+                                )
+                        :
+                        integer
+                        ;
+
+                /compound_statement
+                        BEGIN
+                        /optional_statements
+                                /statement_list
+                                        /STMT
+                                                 /variable
+                                                        op
+
+                                                :=
+                                                /expression 
+                                                        /simple expression 
+                                                                /TERM
+                                                                        /factor
+                                                                                ij
+
+                                                                /ADD
+                                                                /TERM
+                                                                        /factor
+                                                                                mn
+
+                                                                /ADD
+                                                                /TERM
+                                                                        /factor
+                                                                                op
+
+                        END
+        ;
+        /compound_statement
+                BEGIN
+                /optional_statements
+                        /statement_list
+                                /STMT
+                                         /variable
+                                                ij
+
+                                        :=
+                                        /expression 
+                                                /simple expression 
+                                                        /TERM
+                                                                /factor
+                                                                        45
+                                ;
+                                /STMT
+                                        IF
+                                        /expression 
+                                                /simple expression 
+                                                        /TERM
+                                                                /factor
+                                                                        ij
+
+                                                 >
+                                                /simple expression 
+                                                        /TERM
+                                                                /factor
+                                                                        1
+                                         THEN
+                                        /STMT
+                                                 /variable
+                                                        op
+
+                                                :=
+                                                /expression 
+                                                        /simple expression 
+                                                                /TERM
+                                                                        /factor
+                                                                                1
+                                        ELSE
+                                        /STMT
+                                                 /variable
+                                                        op
+
+                                                :=
+                                                /expression 
+                                                        /simple expression 
+                                                                /TERM
+                                                                        /factor
+                                                                                2
+                                ;
+                                /STMT
+                                         /variable
+                                                qr
+
+                                        :=
+                                        /expression 
+                                                /simple expression 
+                                                        /TERM
+                                                                /factor
+                                                                        kl
+                                                                        (
+                                                                        /expression_list
+                                                                                /expression 
+                                                                                        /simple expression 
+                                                                                                /TERM
+                                                                                                        /factor
+                                                                                                                55
+                                                                        )
+                END
+        .
